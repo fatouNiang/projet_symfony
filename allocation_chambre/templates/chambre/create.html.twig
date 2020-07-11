@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block title %}Add une chambre{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+    <div class="container">
+
+        <h1 class="text-center text-light"> Ajouter Une Chambre</h1>
+            {{ form_start (form) }}
+            <div class="container d-flex justify-content-center bg-white form">
+            <input type="hidden" id="numero" value="{{numero}}">
+                {{ form_widget (form) }}
+            </div>
+            <div class="w-100 d-flex justify-content-center">
+                <button type="submit" name="" id="" class="btn btn-info p-é">Enregistrer</button>
+            </div>
+            {{ form_end (form) }}
+                   
+    </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+$(document).ready(function(){
+    $('#chambre_numeroBat').keyup(function (){
+        numero= $('#numero').val().toString().padStart(4,'0'); // toString convertit le int récupéré en chaine et padStart ajoute les zeros par exemples en avant du chiffre ( 4 signifie la chaine et 0 le chiffre à ajouter )
+        numeroBat=$('#chambre_numeroBat').val();
+        c=numeroBat.toString().padStart(3,'0');
+        $('#chambre_numero').attr('value',`${c}-${numero}`)
+    });
+})
+</script>
+{% endblock %}

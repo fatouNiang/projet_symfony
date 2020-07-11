@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block title %}Add une Etudiant{% endblock %}
+{% block body %}
+    {{ form_start (form) }}
+        <div class="container d-flex justify-content-center">
+        <div class="row bg-light mt-5">
+            <div class="col-12 d-flex justify-content-center font-weight-bold titre">Ajouter Une Etudiant</div>
+                <div class="col-12">
+                <div class="form-group d-flex justify-content-center">
+                    <input type="hidden" id="matricule" value="{{ matricule }}">
+                    <div class="input">{{form_row (form.matricule, {'attr': {'placeholder': "matricule de l'etudiant"}})}}</div>
+                </div>
+                 <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.nom, {'attr': {'placeholder': "nom de l'etudiant"}})}}</div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.prenom, {'attr': {'placeholder': "prenom de l'etudiant"}})}}</div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.Email, {'attr': {'placeholder': "email de l'etudiant"}})}}</div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.telephone, {'attr': {'placeholder': "votre numero de telephone"}})}}</div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.dateNaiss)}}</div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.typeEtudiant)}}<span id="btn" class="iconify" data-icon="ant-design:plus-square-filled" data-inline="false" style="color: #17a2b8;"></span>
+                    </div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.adresse, {'attr': {'placeholder': "Adresse de l'etudiant"}})}}</div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.bourse)}}</div>
+                </div>
+                 <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.Chambre)}}</div>
+                </div> 
+                 <div class="form-group d-flex justify-content-center">
+                    <div class="input">{{form_row (form.departement)}}</div>
+                </div> 
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" name="" id="" class="btn btn-info pl-5 pr-5">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end (form) }}
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

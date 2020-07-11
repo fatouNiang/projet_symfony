@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Allocation des chambres!{% endblock %}</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{asset('css/style.css')}} ">
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"><font></font><font></font>
+        {% endblock %}
+    </head>
+    <body>
+
+            <nav class = "navbar navbar-expand-lg navbar-dark bg-info">
+                <a class="navbar-brand" href="/"><font style="vertical-align: inherit;"><font style="vertical-align:inherit;">ODC</font></font></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-extended = "false" aria-label = "Basculer la navigation ">
+                    <span class = "navbar-toggler-icon"></span>
+                </button>
+
+                <div class = "collapse navbar-collapse" id = "navbarColor01">
+                    <ul class = "navbar-nav mr-auto">
+                        <li class = "nav-item active">
+                            <a class="nav-link" href="{{path("addRoom")}}"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> ajouter Chambre </font> </font> <span class = "sr-only"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> (actuel) </font> </font> </ span > </a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link" href="/chambre"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> liste des Chambres </font> </font> </a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link" href="{{path('addEtudiant')}}"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Ajouter un etudiant </font> </font> </a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link" href="{{path('liste_etudiant')}}"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> liste des etudiants </font> </font > </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container">
+                {% block body %} 
+                
+                {% endblock %} 
+            </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script><font></font>
+       <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/dataTable.js') }}"></script>
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+        <script src=""></script>
+        
+        
+        {# <script src="{{ asset('js/generation.js') }}"></script> #}
+        
+        {% block javascripts %}
+
+        {% endblock %}
+    </body>
+</html>
