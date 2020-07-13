@@ -75,7 +75,7 @@ class Etudiant
     private $adresse;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Chambre::class, inversedBy="etudiants")
+     * @ORM\ManyToOne(targetEntity=Chambre::class, inversedBy="etudiants", cascade={"remove"})
      */
     private $Chambre;
 

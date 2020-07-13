@@ -71,17 +71,15 @@ class ChambreController extends AbstractController
     public function edit(Request $request, EntityManagerInterface $em, Chambre $chambre): Response
     {
         $repo= $em->getRepository(Chambre::class);
-        $numero =count($repo->findAll()) ;
+        $numero =count($repo->findAll());
         $form= $this->createForm(ChambreType::class, $chambre);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            // $em->persist($etudiant);
             $em->flush();
             $this->addFlash('success', 'vous avez modifier');
             return $this->redirectToRoute('chambre');
         }
-        // dd($form);
         return $this->render('chambre/create.html.twig',[
             'chambre'=>$chambre,
             'form'=>$form->createView(),
@@ -95,11 +93,24 @@ class ChambreController extends AbstractController
     /**
      * @Route("chambre/{id}/delete", name="chambre_delete")
      */
-    public function delete(EntityManagerInterface $em, Chambre $chambre){
+    public function delete(int $id, EntityManagerInterface $em, Chambre $chambre){
 
-        $em->remove($chambre);
-        $em->flush();
+        $conn= $em->getConnection();
+        $sql= "SELECT * FROM etudiant WHERE etudiant.chambre_id = :numero";
+        $req= $conn->prepare($sql);
+        $req->execute(['numero'=>$id]);
+        $num= $req->fetch();
+
+        if(empty($num)){
+            $em->remove($chambre);
+            $em->flush();
+            $this->addFlash('notice',"chambre supprimé avec succes");
+        }else{
+            $this->addFlash( 'notice', "Cette chambre est occupée");
+            return $this->redirectToRoute('chambre'); 
+        }
         return $this->redirectToRoute('chambre'); 
+
     }
 
 }
